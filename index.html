@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>André Almeida - CV Futurista 3D</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: radial-gradient(ellipse at center, #2a1810 0%, #1a0f0a 50%, #0a0503 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 165, 116, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .scene-container {
+            perspective: 2000px;
+            position: relative;
+        }
+
+        .hand-wrapper {
+            position: relative;
+            transform-style: preserve-3d;
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px) rotateX(5deg) rotateY(-8deg); }
+            50% { transform: translateY(-20px) rotateX(8deg) rotateY(-5deg); }
+        }
+
+        .glass-card {
+            width: 420px;
+            height: 650px;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.03) 0%,
+                rgba(255, 255, 255, 0.01) 50%,
+                rgba(139, 69, 19, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 35px;
+            position: relative;
+            transform-style: preserve-3d;
+            box-shadow: 
+                0 0 80px rgba(139, 69, 19, 0.4),
+                0 0 120px rgba(212, 165, 116, 0.3),
+                inset 0 0 60px rgba(255, 255, 255, 0.02);
+            border: 2px solid rgba(212, 165, 116, 0.3);
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                #8B4513 0%, 
+                #D4A574 25%, 
+                #8B4513 50%, 
+                #D4A574 75%, 
+                #8B4513 100%);
+            border-radius: 25px;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.8;
+            animation: neonPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { opacity: 0.8; filter: blur(8px); }
+            50% { opacity: 1; filter: blur(12px); }
+        }
+
+        .glass-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                transparent 100%);
+            animation: glassShine 4s ease-in-out infinite;
+        }
+
+        @keyframes glassShine {
+            0% { left: -100%; }
+            50%, 100% { left: 200%; }
+        }
+
+        .coffee-icon {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 32px;
+            filter: drop-shadow(0 0 10px #D4A574);
+            animation: iconGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes iconGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px #D4A574); }
+            50% { filter: drop-shadow(0 0 20px #D4A574) drop-shadow(0 0 30px #8B4513); }
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-top: 20px;
+        }
+
+        .name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #D4A574 0%, #FFF 50%, #D4A574 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(212, 165, 116, 0.5);
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            padding-top: 10px;
+        }
+
+        .title {
+            font-size: 16px;
+            color: #D4A574;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+            text-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4A574, transparent);
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
+        }
+
+        .info-section {
+            margin-bottom: 18px;
+        }
+
+        .info-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        .info-content {
+            font-size: 13px;
+            color: #FFFFFF;
+            line-height: 1.5;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 255, 255, 0.3);
+            padding-left: 8px;
+            border-left: 2px solid rgba(212, 165, 116, 0.5);
+            font-weight: 500;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #FFFFFF;
+            padding: 6px 10px;
+            background: rgba(212, 165, 116, 0.15);
+            border-radius: 8px;
+            border: 1px solid rgba(212, 165, 116, 0.4);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .contact-item:hover {
+            background: rgba(212, 165, 116, 0.1);
+            border-color: rgba(212, 165, 116, 0.4);
+            box-shadow: 0 0 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 16px;
+            filter: drop-shadow(0 0 5px #D4A574);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.4), rgba(212, 165, 116, 0.3));
+            border: 1px solid rgba(212, 165, 116, 0.6);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 10px;
+            color: #FFD700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            box-shadow: inset 0 0 10px rgba(212, 165, 116, 0.2);
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(212, 165, 116, 0.2));
+            box-shadow: 0 0 15px rgba(212, 165, 116, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .experience-compact {
+            margin-top: 10px;
+        }
+
+        .exp-item {
+            margin-bottom: 12px;
+            padding: 10px;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 10px;
+            border-left: 3px solid #FFD700;
+        }
+
+        .exp-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            color: #FFD700;
+            font-weight: 700;
+            margin-bottom: 3px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.9);
+        }
+
+        .exp-company {
+            font-size: 11px;
+            color: #FFFFFF;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .exp-period {
+            font-size: 10px;
+            color: #D4A574;
+            font-style: italic;
+            margin-top: 2px;
+            font-weight: 500;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .hologram-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(212, 165, 116, 0.03) 0px,
+                    transparent 2px,
+                    transparent 4px,
+                    rgba(212, 165, 116, 0.03) 6px
+                );
+            pointer-events: none;
+            border-radius: 25px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: rgba(212, 165, 116, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .glass-card {
+                width: 100%;
+                max-width: 380px;
+                height: auto;
+                min-height: 600px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene-container">
+        <div class="hand-wrapper">
+            <div class="glass-card">
+                <div class="hologram-effect"></div>
+                
+                <div class="coffee-icon">☕</div>
+
+                <div class="profile-section">
+                    <h1 class="name">ANDRÉ ALMEIDA</h1>
+                    <p class="title">Gerente de Cafeteria & Confeitaria</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>Barueri, SP</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <span>+55 11 99259-8585</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <span>andremuseu@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="info-section">
+                    <div class="info-label">▸ Perfil</div>
+                    <div class="info-content">
+                        15+ anos liderando operações em cafeterias e confeitarias. Especialista em gestão de pessoas, qualidade e experiência do cliente.
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">▸ Formação</div>
+                    <div class="info-content">
+                        Bacharelado em Marketing<br>
+                        Unicesumar • 2024-2026
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">▸ Competências Principais</div>
+                    <div class="skills-grid">
+                        <div class="skill-tag">Liderança</div>
+                        <div class="skill-tag">Estratégia</div>
+                        <div class="skill-tag">Operações</div>
+                        <div class="skill-tag">Qualidade</div>
+                        <div class="skill-tag">Finanças</div>
+                        <div class="skill-tag">Marketing</div>
+                        <div class="skill-tag">Atendimento</div>
+                        <div class="skill-tag">Inovação</div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="info-section">
+                    <div class="info-label">▸ Experiência Recente</div>
+                    <div class="experience-compact">
+                        <div class="exp-item">
+                            <div class="exp-title">Gerente de Loja</div>
+                            <div class="exp-company">Confeitaria Dama</div>
+                            <div class="exp-period">2017 - 2022</div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-title">Gerente de Loja</div>
+                            <div class="exp-company">Coollab</div>
+                            <div class="exp-period">2014 - 2016</div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-title">Gerente de Centro de Café</div>
+                            <div class="exp-company">Museu do Café</div>
+                            <div class="exp-period">2008 - 2013</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scroll-indicator">◆ Premium CV ◆</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
